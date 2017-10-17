@@ -1,0 +1,58 @@
+ALTER TABLE `client` ADD `status` VARCHAR(32) NOT NULL AFTER `disable`;
+
+ALTER TABLE `client` ADD `time_life` INT NOT NULL AFTER `status`;
+
+ALTER TABLE `users_rest` ADD `is_admin` BOOLEAN NOT NULL DEFAULT FALSE AFTER `time_life`;
+
+ALTER TABLE `client` CHANGE `password` `password` VARCHAR(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+UPDATE `author` SET name='Alexandr', `surname` = 'Grin' WHERE `author`.`id` = 1;
+UPDATE `author` SET name='Fedor', `surname` = 'Dostoevsky' WHERE `author`.`id` = 2;
+UPDATE `author` SET name='Roger', `surname` = ' Zelazny' WHERE `author`.`id` = 3;
+UPDATE `author` SET name='Patrick', `surname` = 'Zuskind' WHERE `author`.`id` = 4;
+UPDATE `author` SET name='Franz', `surname` = 'Kafka' WHERE `author`.`id` = 5;
+UPDATE `author` SET name='Sergey', `surname` = 'Lukyanenko' WHERE `author`.`id` = 6;
+UPDATE `author` SET name='Nikolay', `surname` = 'Nosov' WHERE `author`.`id` = 7;
+UPDATE `author` SET name='Ernest', `surname` = 'Hemingway' WHERE `author`.`id` = 8;
+UPDATE `author` SET name='John', `surname` = 'Tolkien' WHERE `author`.`id` =9;
+
+UPDATE `book` SET `name` = 'Scarlet Sails' WHERE `book`.`id` = 1;
+UPDATE `book` SET `description` = '"Scarlet Sails" is a story-an extravaganza of Alexander Greene about unshakable faith and all-conquering, sublime dream, about what everyone can do for a close miracle.' WHERE `book`.`id` = 1;
+UPDATE `book` SET `name` = 'The Brothers Karamazov' WHERE `book`.`id` = 2;
+UPDATE `book` SET `name` = 'Medium gender ' WHERE `book`.`id` = 3;
+UPDATE `book` SET `name` = 'The Chronicles of Amber' WHERE `book`.`id` = 4;
+UPDATE `book` SET `description` = 'The Chronicles of Amber is a fantasy series of ten novels by the famous American science fiction writer Roger Zelazny. The series is divided into two volumes of five parts each, in the first volume the main character is Corwin, in the second - his son Merlin. In various translations of Amber (English amber - amber) is also called "Amber", "Amber", "Amber Kingdom"' WHERE `book`.`id` = 4;
+UPDATE `book` SET `name` = 'Perfumer' WHERE `book`.`id` = 5;
+UPDATE `book` SET `description` = '"The Story of a Murderer" tells about the life of a man whose "genius and phenomenal vanity was limited to a sphere that leaves no trace in history - a volatile kingdom of smells."' WHERE `book`.`id` = 5;
+UPDATE `book` SET `name` = 'Process' WHERE `book`.`id` = 6;
+UPDATE `book` SET `name` = 'The night Watch ' WHERE `book`.`id` = 7;
+UPDATE `book` SET `description` = 'The streets of the night city are dangerous - it is at this time for hunting sent by Others: vampires, magicians, werewolves and other evil spirits. They are more dangerous than the most cruel criminals. After all, coping with them is very difficult.' WHERE `book`.`id` = 7;
+
+INSERT INTO `author` (`id`, `name`, `surname`) VALUES (NULL, 'Evgenidis', 'Jeffrey');
+UPDATE `book_author` SET `author_id`=10 WHERE `book_id`=3;
+UPDATE `book_author` SET `author_id`=3 WHERE `book_id`=4;
+UPDATE `book_author` SET `author_id`=4 WHERE `book_id`=5;
+UPDATE `book_author` SET `author_id`=5 WHERE `book_id`=6;
+UPDATE `book_author` SET `author_id`=6 WHERE `book_id`=7;
+
+INSERT INTO `author` (`id`, `name`, `surname`) VALUES (NULL, 'Vladimir ', 'Vasilyev');
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES ('7', '11');
+
+INSERT INTO `book` (`id`, `name`, `price`, `description`, `discount`) VALUES (NULL, 'The Living Hat', '205.25', 'The hat lay on the chest of drawers, the kitten Vaska sat on the floor near the chest of drawers, while Vovka and Vadik sat at the table and painted the pictures. What happened next ... read the book', '2.5');
+INSERT INTO `book` (`id`, `name`, `price`, `description`, `discount`) VALUES (NULL, 'Car', '112', 'When Mishka and I were very young, we really wanted to go for a ride on a car, but it was not possible at all. No matter how much we asked the chauffeurs, no one wanted to roll us. Once we walked in the courtyard. Suddenly we look - in the street, near our gate, the car stopped.', '0');
+INSERT INTO `book` (`id`, `name`, `price`, `description`, `discount`) VALUES (NULL, 'Star guard. Crusaders of the sky', '223.45', 'There is an ancient legend about the Roman emperor who, to show his power, summoned the commander of the faithful legion and told him to go with his people across Asia to the edge of the world. And then a thousand people disappeared on a huge continent, was swallowed by him forever. On some unknown battlefield, the last handful of survivors lined up in the square, defending themselves against the attack of the barbarians. And their eagle, perhaps a generation later, stood, lonely and shedding, in the tent of the leader of the nomads. But those who knew these proud people, their service and traditions, could assume that they continued to go to the east, while at least one remained on their feet. In 8054, from the birth of Christ, history repeated itself, as it always does. The first Galactic Empire collapsed. Dictators, emperors, unifiers have wrested from theirs the power of the Central Control their own and neighboring solar systems. Space emperors raised flags and exterminated fleets to absorb prey - the remnants of the collapse of the empire. At that time only ruthless flourished. Here and there a person or group of people tried in vain to resist the flow of destruction and separation. And among these fighters who refused to forget their faith in the indestructible rule of the Central Control, the most notable were the remnants of the Star Patrol, an armed association that for thousands of years enjoyed an indisputable authority. Perhaps, precisely because in their ranks they no longer found security. These people held on tightly to each other, adhered even more strictly to their ancient code of ethics and morality. And their stubborn loyalty to the disappeared ideals and irritated the new rulers, and caused them pity.', '0');
+INSERT INTO `author` (`id`, `name`, `surname`) VALUES (NULL, 'Paul', ' Andersen'), (NULL, 'Andrew', 'Norton');
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES ('10', '12'), ('10', '13');
+INSERT INTO `book_author` (`book_id`, `author_id`) VALUES ('8', '7'), ('9', '7');
+
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('1', '7');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('2', '7');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('1', '6'), ('2', '6');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('3', '6');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('1', '2'), ('2', '2');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('4', '8');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('6', '7');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('7', '8');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('8', '1'), ('9', '1');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('8', '4'), ('9', '4');
+INSERT INTO `book_ganre` (`book_id`, `ganre_id`) VALUES ('10', '8');
