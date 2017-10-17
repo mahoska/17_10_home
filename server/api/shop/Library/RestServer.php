@@ -17,9 +17,9 @@ class RestServer{
     public function __construct(){
         $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         //courses
-        //list($s, $a, $d, $db,$sv, $table, $path) = explode('/', $url, 7);
+        list($s, $a, $d, $db,$sv, $table, $path) = explode('/', $url, 7);
         //home
-        list($s, $a, $d, $db, $table, $path) = explode('/', $url, 6);
+        //list($s, $a, $d, $db, $table, $path) = explode('/', $url, 6);
         
         $this->serverMethod = $_SERVER['REQUEST_METHOD'];
         $this->className = ucfirst($table);
